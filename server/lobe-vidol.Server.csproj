@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -23,6 +23,10 @@
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
+    <PackageReference Include="StableDiffusion.NET" Version="1.2.0" />
+    <PackageReference Include="StableDiffusion.NET.Backend.Cpu" Version="1.2.1" />
+    <PackageReference Include="StableDiffusion.NET.Backend.Cuda" Version="1.2.1" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.5" />
   </ItemGroup>
 
 </Project>

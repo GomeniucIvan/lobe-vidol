@@ -26,6 +26,7 @@ export const chatCompletion = async (payload: ChatCompletionPayload) => {
 
   const postMessages = messages.map((m) => ({ content: m.content, role: m.role }));
 
+  //TODO vite proxy
   return await fetch('https://localhost:7243/chat/completion', {
     body: JSON.stringify({
       model: config?.model,
