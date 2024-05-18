@@ -17,6 +17,8 @@ export const fetchSEE = async (
   handler: {
     onMessageError?: (error: ChatMessageError) => void;
     onMessageUpdate?: (text: string) => void;
+    onImagePromptStart?: () => void;
+    onImagePromptEnd?: (text: string) => void;
   },
 ) => {
   const res = await fetcher();
@@ -42,13 +44,44 @@ export const fetchSEE = async (
   const decoder = new TextDecoder('utf8');
 
   let done = false;
+  let accumulatedText = '';
+  let isImageGeneration = false;
+  let buffer = '';
 
   while (!done) {
-    const { value, done: doneReading } = await reader.read();
+    const {value, done: doneReading} = await reader.read();
     done = doneReading;
-    const chunkValue = decoder.decode(value, { stream: true });
-    handler.onMessageUpdate?.(chunkValue);
+    const chunkValue = decoder.decode(value, {stream: true});
+    buffer += chunkValue;
+
+    let boundary = buffer.indexOf('}{');
+
+    while (boundary !== -1) {
+      const completeJson = buffer.slice(0, boundary + 1);
+      buffer = buffer.slice(boundary + 1);
+
+      try {
+        const parsedData = JSON.parse(completeJson);
+
+        if (parsedData.isTextPromt) {
+          handler.onMessageUpdate?.(parsedData.content);
+        } else if(parsedData.isImagePrompt) {
+          accumulatedText += parsedData.content;
+          isImageGeneration = true;
+
+          //todo remove after image adding image generation component
+          handler.onMessageUpdate?.(parsedData.content);
+        }
+      } catch (error) {
+        console.error('Parsing error:', error);
+      }
+
+      boundary = buffer.indexOf('}{');
+    }
   }
 
+  if (isImageGeneration){
+    handler.onImagePromptEnd?.(accumulatedText);
+  }
   return returnRes;
 };

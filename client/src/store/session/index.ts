@@ -253,6 +253,12 @@ export const createSessonStore: StateCreator<SessionStore, [['zustand/devtools',
           type: 'UPDATE_MESSAGE',
         });
       },
+      onImagePromptStart: () => {
+       
+      },
+      onImagePromptEnd: (txt: string) => {
+       
+      }
     });
     set({ chatLoadingId: undefined });
   },
