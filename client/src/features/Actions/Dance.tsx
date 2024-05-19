@@ -2,9 +2,11 @@ import { ActionIcon } from '@lobehub/ui';
 import { Music2 } from 'lucide-react';
 
 import { useConfigStore } from '@/store/config';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
   const [openPanel] = useConfigStore((s) => [s.openPanel]);
+  const { t } = useTranslation('common');
 
   return (
     <ActionIcon
@@ -12,7 +14,7 @@ export default () => {
       onClick={() => {
         openPanel('dance');
       }}
-      title={'音乐与舞蹈'}
+      title={t('musicAndDance')}
     />
   );
 };

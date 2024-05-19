@@ -5,6 +5,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { HEADER_HEIGHT } from '@/constants/common';
 import Market from '@/features/Actions/Market';
+import { useTranslation } from 'react-i18next';
 
 import V from './Elsa';
 import List from './List';
@@ -45,6 +46,7 @@ const useStyles = createStyles(({ css, token, prefixCls }) => ({
 const SideBar = () => {
   const { styles } = useStyles();
   const [searchName, setSearchName] = useState<string>();
+  const { t } = useTranslation('common');
 
   return (
     <>
@@ -59,7 +61,7 @@ const SideBar = () => {
           onChange={(e) => {
             setSearchName(e.target.value);
           }}
-          placeholder="搜索"
+          placeholder={t('search')}
           shortKey="f"
           spotlight
           type={'block'}

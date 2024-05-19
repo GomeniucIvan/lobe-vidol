@@ -1,0 +1,23 @@
+{
+  "generalSettings": "General Settings",
+  "languageModel": "Language Model",
+  "themeSettings": "Theme Settings",
+  "customThemeMode": "Custom Theme Mode",
+  "themeColor": "Theme Color",
+  "customThemeColor": "Custom Theme Color",
+  "themeMode": "Theme Mode",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "followSystem": "Follow System",
+  "customBackgroundEffect": "Custom background effect, can be turned off to enhance performance",
+  "backgroundEffect": "Background Effect",
+  "glow": "Glow",
+  "none": "None",
+  "systemSettings": "System Settings",
+  "clearAllConversationData": "This will clear all conversation data, including character settings, messages, etc.",
+  "clearAllConversationMessages": "Clear All Conversation Messages",
+  "clearImmediately": "Clear Immediately",
+  "resetAllSystemSettings": "This will reset all system settings, including theme settings, background effects, language model settings, window positions, etc.",
+  "resetSystemSettings": "Reset System Settings",
+  "resetImmediately": "Reset Immediately"
+}

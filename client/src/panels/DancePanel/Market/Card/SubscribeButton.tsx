@@ -2,6 +2,7 @@ import { Button } from 'antd';
 
 import { danceListSelectors, useDanceStore } from '@/store/dance';
 import { Dance } from '@/types/dance';
+import { useTranslation } from 'react-i18next';
 
 interface SubscribeButtonProps {
   dance: Dance;
@@ -17,6 +18,7 @@ const SubscribeButton = (props: SubscribeButtonProps) => {
   const { dance } = props;
 
   const isSubscribed = subscribed(dance.danceId);
+  const { t } = useTranslation('common');
 
   return (
     <Button
@@ -29,7 +31,7 @@ const SubscribeButton = (props: SubscribeButtonProps) => {
       }}
       type={isSubscribed ? 'default' : 'primary'}
     >
-      {isSubscribed ? '取消订阅' : '订阅'}
+      {isSubscribed ? t('unsubscribe') : t('subscribe')}
     </Button>
   );
 };

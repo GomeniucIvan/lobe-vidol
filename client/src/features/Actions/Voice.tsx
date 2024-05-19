@@ -6,6 +6,7 @@ import { Volume2, VolumeXIcon } from 'lucide-react';
 import { DESKTOP_HEADER_ICON_SIZE } from '@/constants/common';
 import { toogleVoice } from '@/services/chat';
 import { useSessionStore } from '@/store/session';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = createStyles(({ token, css }) => ({
   voice: css`
@@ -20,6 +21,7 @@ const useStyles = createStyles(({ token, css }) => ({
 const VoiceSwitch = () => {
   const { styles } = useStyles();
   const [voiceOn] = useSessionStore((s) => [s.voiceOn]);
+  const { t } = useTranslation('common');
 
   return (
     <ActionIcon
@@ -27,7 +29,7 @@ const VoiceSwitch = () => {
       icon={voiceOn ? Volume2 : VolumeXIcon}
       onClick={toogleVoice}
       size={DESKTOP_HEADER_ICON_SIZE}
-      title={'语音合成'}
+      title={t('speechSynthesis')}
     />
   );
 };

@@ -10,6 +10,7 @@ import PlayList from '@/features/AudioPlayer/PlayList';
 import Volume from '@/features/AudioPlayer/Volume';
 import { DanceStore, useDanceStore } from '@/store/dance';
 import { useViewerStore } from '@/store/viewer';
+import { useTranslation } from 'react-i18next';
 
 import { useStyles } from './style';
 
@@ -35,6 +36,7 @@ function Player(props: PlayerProps) {
   const [currentProgress, setCurrentProgress] = useState(0);
   const { nextDance, currentPlay, isPlaying } = useDanceStore(danceSelectors);
   const viewer = useViewerStore((s) => s.viewer);
+  const { t } = useTranslation('common');
 
   const { styles } = useStyles();
 
@@ -83,11 +85,11 @@ function Player(props: PlayerProps) {
           <Duration currentProgress={currentProgress} duration={duration} />
           <div className={styles.controller}>
             <Typography.Text className={styles.name} ellipsis={{ tooltip: currentPlay?.name }}>
-              {currentPlay?.name || '请从舞蹈列表中选取'}
+              {currentPlay?.name || t('selectFromDanceList')}
             </Typography.Text>
             <Control />
             <div className={styles.right}>
-              <ActionIcon icon={ListMusic} onClick={() => setOpen(true)} title={'播放列表'} />
+              <ActionIcon icon={ListMusic} onClick={() => setOpen(true)} title={t('playlist')} />
               <Volume audioRef={ref} setVolume={setVolume} volume={volume} />
             </div>
           </div>

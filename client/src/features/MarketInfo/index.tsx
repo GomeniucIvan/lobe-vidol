@@ -11,6 +11,7 @@ import { SIDEBAR_MAX_WIDTH, SIDEBAR_WIDTH } from '@/constants/common';
 import { agentListSelectors, useAgentStore } from '@/store/agent';
 import { marketStoreSelectors, useMarketStore } from '@/store/market';
 import { useSessionStore } from '@/store/session';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = createStyles(({ css, token }) => ({
   content: css`
@@ -43,6 +44,7 @@ const Header = () => {
   ]);
 
   const createSession = useSessionStore((s) => s.createSession);
+  const { t } = useTranslation('common');
 
   const actions = [];
   if (currentAgentItem) {
@@ -58,7 +60,7 @@ const Header = () => {
           }}
           type={'primary'}
         >
-          聊天
+          {t('chat')}
         </Button>,
       );
     }
@@ -68,15 +70,15 @@ const Header = () => {
         onClick={() => {
           if (isSubscribed) {
             unsubscribe(currentAgentItem.agentId);
-            message.success('已取消订阅');
+            message.success(t('unsubscribed'));
           } else {
             subscribe(currentAgentItem);
-            message.success('订阅成功');
+            message.success(t('subscriptionSuccess'));
           }
         }}
         type={isSubscribed ? 'default' : 'primary'}
       >
-        {isSubscribed ? '取消订阅' : '订阅'}
+        {isSubscribed ? t('unsubscribe') : t('subscribe')}
       </Button>,
     );
   }

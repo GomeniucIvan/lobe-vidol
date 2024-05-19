@@ -1,6 +1,7 @@
 import { ActionIconGroupItems } from '@lobehub/ui/es/ActionIconGroup';
 import { Copy, Edit, ListRestart, RotateCcw, Trash } from 'lucide-react';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ChatListActionsBar {
   copy: ActionIconGroupItems;
@@ -12,23 +13,25 @@ interface ChatListActionsBar {
 }
 
 export const useChatListActionsBar = (): ChatListActionsBar => {
+  const { t } = useTranslation('common');
+
   return useMemo(
     () => ({
       copy: {
         icon: Copy,
         key: 'copy',
-        label: '复制',
+        label: t('copy'),
       },
       del: {
         danger: true,
         icon: Trash,
         key: 'del',
-        label: '删除',
+        label: t('delete'),
       },
       delAndRegenerate: {
         icon: ListRestart,
         key: 'delAndRegenerate',
-        label: '删除并重新生成',
+        label: t('deleteAndRegenerate'),
       },
       divider: {
         type: 'divider',
@@ -36,12 +39,12 @@ export const useChatListActionsBar = (): ChatListActionsBar => {
       edit: {
         icon: Edit,
         key: 'edit',
-        label: '编辑',
+        label: t('edit'),
       },
       regenerate: {
         icon: RotateCcw,
         key: 'regenerate',
-        label: '重新生成',
+        label: t('regenerate'),
       },
     }),
     [],

@@ -1,14 +1,16 @@
 import { ActionIconGroup, useChatListActionsBar } from '@lobehub/ui';
 import { memo } from 'react';
-
+import { useTranslation } from 'react-i18next';
 import type { RenderAction } from '@/features/ChatItem/type';
 
 const UserActionsBar: RenderAction = ({ onActionClick }) => {
+  const { t } = useTranslation('common');
+
   const { copy, divider, del, edit } = useChatListActionsBar({
-    copy: '复制',
-    delete: '删除',
-    edit: '编辑',
-    regenerate: '重新生成',
+    copy: t('copy'),
+    delete: t('delete'),
+    edit: t('edit'),
+    regenerate: t('regenerate'),
   });
   return (
     <ActionIconGroup

@@ -5,6 +5,7 @@ import PageLoading from '@/components/PageLoading';
 import ToolBar from '@/features/AgentViewer/ToolBar';
 import { sessionSelectors, useSessionStore } from '@/store/session';
 import { useViewerStore } from '@/store/viewer';
+import { useTranslation } from 'react-i18next';
 
 import { useStyles } from './style';
 
@@ -20,6 +21,7 @@ function AgentViewer(props: Props) {
   const [loading, setLoading] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const currentAgentModel = useSessionStore((s) => sessionSelectors.currentAgentModel(s));
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     if (currentAgentModel) {
@@ -42,7 +44,7 @@ function AgentViewer(props: Props) {
   return (
     <div ref={ref} className={classNames(styles.viewer, className)} style={style}>
       <ToolBar className={styles.toolbar} viewerRef={ref} />
-      {loading ? <PageLoading title={'模型加载中，请稍后...'} /> : null}
+      {loading ? <PageLoading title={t('modelLoading')} /> : null}
       <canvas ref={canvasRef} className={styles.canvas}></canvas>
     </div>
   );

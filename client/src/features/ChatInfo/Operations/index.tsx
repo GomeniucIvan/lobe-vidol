@@ -5,6 +5,7 @@ import React, { memo } from 'react';
 
 import { useConfigStore } from '@/store/config';
 import { useSessionStore } from '@/store/session';
+import { useTranslation } from 'react-i18next';
 
 import Item from './Item';
 
@@ -17,6 +18,7 @@ export interface MyListProps {
 const Operations = memo<MyListProps>(({ mobile }) => {
   const [openPanel] = useConfigStore((s) => [s.openPanel]);
   const [clearHistory] = useSessionStore((s) => [s.clearHistory]);
+  const { t } = useTranslation('common');
 
   const items = [
     // {
@@ -44,22 +46,22 @@ const Operations = memo<MyListProps>(({ mobile }) => {
     {
       icon: Music,
       key: 'music',
-      label: '音乐与舞蹈',
+      label: t('musicAndDance'),
       onClick: () => {
         openPanel('dance');
       },
     },
     {
       icon: Eraser,
-      label: '清除上下文',
+      label: t('clear'),
       key: 'context',
       onClick: () => {
         confirm({
-          title: '确定删除历史消息？',
+          title: t('confirmDeleteHistoryMessages'),
           icon: <ExclamationCircleFilled />,
-          content: '该操作不可逆，请谨慎操作',
-          okText: '确定',
-          cancelText: '取消',
+          content: t('irreversibleAction'),
+          okText: t('confirm'),
+          cancelText: t('clear'),
           onOk() {
             clearHistory();
           },

@@ -6,6 +6,7 @@ import React, { memo, useState } from 'react';
 import DanceInfo from '@/components/DanceInfo';
 import { SIDEBAR_MAX_WIDTH, SIDEBAR_WIDTH } from '@/constants/common';
 import { danceListSelectors, useDanceStore } from '@/store/dance';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = createStyles(({ css, token }) => ({
   content: css`
@@ -39,6 +40,7 @@ const SideBar = memo(() => {
   ]);
 
   const currentDance = useDanceStore((s) => danceListSelectors.currentDanceItem(s));
+  const { t } = useTranslation('common');
 
   return (
     <DraggablePanel
@@ -69,32 +71,32 @@ const SideBar = memo(() => {
             }}
             type={'primary'}
           >
-            播放
+            {t('play')}
           </Button>,
           <Button
             key="play"
             onClick={() => {
               if (currentDance) {
                 addToPlayList(currentDance);
-                message.success('已添加到播放列表');
+                message.success(t('addedToPlaylist'));
               }
             }}
           >
-            添加到列表
+            {t('addToList')}
           </Button>,
           <Popconfirm
-            cancelText="取消"
-            description={`确定取消订阅音乐【${currentDance?.name}】吗？`}
+            cancelText={t('cancel')}
+            description={t('cancelSubscriptionMusic', { name: currentDance?.name })}
             key="delete"
-            okText="确定"
+            okText={t('confirm')}
             onConfirm={() => {
               if (currentDance) {
                 unsubscribe(currentDance.danceId);
               }
             }}
-            title="取消订阅？"
+            title={`${t('unsubscribe')}?`}
           >
-            <Button danger>取消订阅</Button>
+            <Button danger>{t('unsubscribe')}</Button>
           </Popconfirm>,
         ]}
         dance={currentDance}

@@ -3,6 +3,7 @@
 import { createStyles } from 'antd-style';
 
 import PageLoading from '@/components/PageLoading';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = createStyles(({ css }) => ({
   content: css`
@@ -15,9 +16,10 @@ const useStyles = createStyles(({ css }) => ({
 
 const Loading = () => {
   const { styles } = useStyles();
+  const { t } = useTranslation('common');
   return (
     <div className={styles.content}>
-      <PageLoading title={'应用初始化中，请稍后...'} />
+      <PageLoading title={`${t('applicationLoading')}`} />
     </div>
   );
 };

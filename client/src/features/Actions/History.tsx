@@ -3,18 +3,20 @@ import { Popconfirm } from 'antd';
 import { Eraser } from 'lucide-react';
 
 import { useSessionStore } from '@/store/session';
+import { useTranslation } from 'react-i18next';
 
 const History = () => {
+  const { t } = useTranslation('common');
   const [clearHistory] = useSessionStore((s) => [s.clearHistory]);
   return (
     <Popconfirm
-      cancelText="取消"
-      description="该操作不可逆，请谨慎操作"
-      okText="确定"
+      cancelText={t('cancel')}
+      description={t('irreversibleAction')}
+      okText={t('confirm')}
       onConfirm={clearHistory}
-      title="确定删除历史消息？"
+      title={t('confirmDeleteHistoryMessages')}
     >
-      <ActionIcon icon={Eraser} title="清除上下文" />
+      <ActionIcon icon={Eraser} title={t('clear')} />
     </Popconfirm>
   );
 };

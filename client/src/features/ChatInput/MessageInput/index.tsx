@@ -4,6 +4,7 @@ import { Button } from 'antd';
 import { InputRef } from 'antd/es/input/Input';
 import React, { memo, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';
+import { useTranslation } from 'react-i18next';
 
 import Record from '@/features/Actions/Record';
 import ToggleChatDialog from '@/features/Actions/ToggleChatDialog';
@@ -22,6 +23,7 @@ const InputArea = memo((props: InputAreaProps) => {
   const onSend = useChatInput();
   const { className, style } = props;
   const [viewerMode] = useSessionStore((s) => [s.viewerMode]);
+  const { t } = useTranslation('chat');
 
   const [loading, messageInput, setMessageInput] = useSessionStore((s) => [
     !!s.chatLoadingId,
@@ -57,7 +59,7 @@ const InputArea = memo((props: InputAreaProps) => {
           e.preventDefault();
           onSend();
         }}
-        placeholder="请输入内容开始聊天"
+        placeholder={t('enterContentToStartChat')}
         ref={ref}
         autoSize={true}
         type={'block'}

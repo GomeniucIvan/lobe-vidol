@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { useAgentStore } from '@/store/agent';
 import { useSessionStore } from '@/store/session';
+import { useTranslation } from 'react-i18next';
 
 interface ActionsProps {
   id: string;
@@ -18,11 +19,12 @@ export default (props: ActionsProps) => {
   const [unsubscribe] = useAgentStore((s) => [s.unsubscribe]);
   const currentAgent = useAgentStore((s) => s.getAgentById(id));
   const createSession = useSessionStore((s) => s.createSession);
+  const { t } = useTranslation('common');
 
   const items: MenuProps['items'] = [
     {
       icon: <MessageCircle />,
-      label: '开始聊天',
+      label: t('startChatting'),
       key: 'chat',
       onClick: ({ domEvent }) => {
         domEvent.stopPropagation();
@@ -35,7 +37,7 @@ export default (props: ActionsProps) => {
       danger: true,
       icon: <Trash2 />,
       key: 'delete',
-      label: '删除角色',
+      label: t('deleteRole'),
       onClick: ({ domEvent }) => {
         domEvent.stopPropagation();
         modal.confirm({
@@ -44,9 +46,9 @@ export default (props: ActionsProps) => {
           onOk: () => {
             unsubscribe(id);
           },
-          okText: '删除',
-          cancelText: '取消',
-          title: '确认删除角色以及相关联的会话消息吗？删除后无法恢复, 请谨慎操作！',
+          okText: t('delete'),
+          cancelText: t('cancel'),
+          title: t('deleteRoleWarningMessage'),
         });
       },
     },

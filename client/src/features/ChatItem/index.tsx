@@ -7,6 +7,7 @@ import { CHAT_INPUT_WIDTH } from '@/constants/common';
 import { useSessionStore } from '@/store/session';
 import { sessionSelectors } from '@/store/session/selectors';
 import { ChatMessage } from '@/types/chat';
+import { useTranslation } from 'react-i18next';
 
 import ActionsBar from './ActionsBar';
 import ErrorMessageExtra, { getErrorAlertConfig } from './Error';
@@ -39,6 +40,7 @@ export interface ChatListItemProps {
 const Item = memo<ChatListItemProps>(({ index, id, showTitle = false, type = 'block' }) => {
   const { styles } = useStyles();
   const [editing, setEditing] = useState(false);
+  const { t } = useTranslation('common');
 
   const item = useSessionStore((s) => {
     const chats = sessionSelectors.currentChatsWithGreetingMessage(s);
@@ -100,9 +102,9 @@ const Item = memo<ChatListItemProps>(({ index, id, showTitle = false, type = 'bl
         )}
         showTitle={showTitle}
         text={{
-          cancel: '取消',
-          confirm: '确定',
-          edit: '编辑',
+          cancel: t('cancel'),
+          confirm: t('confirm'),
+          edit: t('edit'),
         }}
         time={item.updatedAt || item.createdAt}
         type={type}

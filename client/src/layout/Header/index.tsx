@@ -5,6 +5,7 @@ import { Space, Tag, Tooltip } from 'antd';
 import { GithubIcon, UserRoundPlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { HeaderNavKey } from '@/layout/type';
 
@@ -15,6 +16,7 @@ interface Props {
 const Header = (props: Props) => {
   const { headerKey } = props;
   const router = useRouter();
+  const { t } = useTranslation('navigation');
 
   return (
     <LobeHeader
@@ -22,7 +24,7 @@ const Header = (props: Props) => {
         <ActionIcon
           icon={UserRoundPlusIcon}
           key="user-plus"
-          title={'创建角色'}
+          title={t('createRole')}
           onClick={() => window.open('https://github.com/lobehub/lobe-vidol-market', '_blank')}
           size="large"
         />,
@@ -37,7 +39,7 @@ const Header = (props: Props) => {
       logo={
         <Space>
           <Logo extra={'Lobe Vidol'} size={36} />
-          <Tooltip title="项目当前正在施工中，不保证数据稳定性，如果遇到问题可以在系统设置中清除会话消息与重置系统设置，造成地不便敬请谅解">
+          <Tooltip title={t('wipInfo')}>
             <Tag color="yellow">WIP</Tag>
           </Tooltip>
         </Space>
@@ -48,19 +50,19 @@ const Header = (props: Props) => {
           items={[
             {
               key: HeaderNavKey.Chat,
-              label: '聊天',
+              label: t('chat'),
             },
             {
               key: HeaderNavKey.Role,
-              label: '角色',
+              label: t('role'),
             },
             {
               key: HeaderNavKey.Market,
-              label: '发现',
+              label: t('market'),
             },
             {
               key: HeaderNavKey.Settings,
-              label: '设置',
+              label: t('settings'),
             },
           ]}
           onChange={(key) => {

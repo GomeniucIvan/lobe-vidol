@@ -8,6 +8,7 @@ import DanceInfo from '@/components/DanceInfo';
 import { SIDEBAR_MAX_WIDTH, SIDEBAR_WIDTH } from '@/constants/common';
 import { danceListSelectors, useDanceStore } from '@/store/dance';
 import { marketStoreSelectors, useMarketStore } from '@/store/market';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = createStyles(({ css, token }) => ({
   content: css`
@@ -23,6 +24,8 @@ const useStyles = createStyles(({ css, token }) => ({
 const Header = () => {
   const { styles } = useStyles();
   const [tempId, setTempId] = useState<string>('');
+  const { t } = useTranslation('common');
+
   const [showDanceSidebar, activateDance, deactivateDance, currentDanceItem] = useMarketStore(
     (s) => [
       marketStoreSelectors.showDanceSideBar(s),
@@ -55,18 +58,18 @@ const Header = () => {
           }}
           type={'primary'}
         >
-          播放
+          {t('play')}
         </Button>,
         <Button
           key="add"
           onClick={() => {
             if (currentDanceItem) {
               addToPlayList(currentDanceItem);
-              message.success('已添加到播放列表');
+              message.success(t('addedToPlaylist'));
             }
           }}
         >
-          添加到列表
+          {t('addToList')}
         </Button>,
       ]);
     }
@@ -82,7 +85,7 @@ const Header = () => {
         }}
         type={isSubscribed ? 'default' : 'primary'}
       >
-        {isSubscribed ? '取消订阅' : '订阅'}
+        {isSubscribed ? t('unsubscribe') : t('subscribe')}
       </Button>,
     );
   }

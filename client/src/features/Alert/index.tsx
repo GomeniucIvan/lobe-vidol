@@ -2,6 +2,7 @@
 
 import React, { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
+import { useTranslation } from 'react-i18next';
 
 import TokenMini from '@/features/Actions/TokenMini';
 
@@ -15,6 +16,7 @@ interface Props {
 const Alert = (props: Props) => {
   const { className, style } = props;
   const { styles } = useStyles();
+  const { t } = useTranslation('chat');
 
   return (
     <Flexbox
@@ -24,7 +26,7 @@ const Alert = (props: Props) => {
       className={className}
       align={'center'}
     >
-      <div className={styles.alert}>请谨记：智能体所说的一切都是由 AI 生成的</div>
+      <div className={styles.alert}>{t('reminderAIGeneratedContent')}</div>
       <TokenMini />
     </Flexbox>
   );

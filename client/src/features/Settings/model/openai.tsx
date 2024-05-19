@@ -11,6 +11,7 @@ import { OPENAI_MODEL_LIST } from '@/constants/openai';
 import { chatCompletion } from '@/services/chat';
 import { configSelectors, useConfigStore } from '@/store/config';
 import { ChatMessage } from '@/types/chat';
+import { useTranslation } from 'react-i18next';
 
 interface ConfigProps {
   className?: string;
@@ -31,6 +32,7 @@ const Config = (props: ConfigProps) => {
   const [form] = AForm.useForm();
   const openAIConfig = useConfigStore((s) => configSelectors.currentOpenAIConfig(s), isEqual);
   const setOpenAIConfig = useConfigStore((s) => s.setOpenAIConfig);
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     form.setFieldsValue(openAIConfig);
@@ -40,10 +42,10 @@ const Config = (props: ConfigProps) => {
     manual: true,
     onSuccess: (res) => {
       if (!res.ok) {
-        message.error('调用接口失败，请检查 APIKey 和接口代理地址是否设置正确');
+        message.error(t('openAI.apiCallFailed'));
         return;
       }
-      message.success('检查通过');
+      message.success(t('checkPassed'));
     },
   });
 
@@ -55,8 +57,8 @@ const Config = (props: ConfigProps) => {
         style={{ display: 'flex', flexGrow: 1 }}
       >
         {/* @ts-ignore */}
-        <FormGroup icon={BotIcon} title={'OpenAI 语言模型'}>
-          <FormItem desc={'Chat GPT 模型'} label={'模型'} name="model">
+        <FormGroup icon={BotIcon} title={t('openAI.languageModel')}>
+          <FormItem desc={t('openAI.chatGPTModel')} label={t('model')} name="model">
             <Select
               options={OPENAI_MODEL_LIST.map((model) => ({
                 label: (
@@ -69,13 +71,13 @@ const Config = (props: ConfigProps) => {
               style={{ width: 300 }}
             />
           </FormItem>
-          <FormItem desc={'请使用自己的 OpenAI Key'} divider label={'API Key'} name="apikey">
+          <FormItem desc={t('openAI.useYourOwnOpenAIKey')} divider label={'API Key'} name="apikey">
             <Input.Password placeholder="sk-" style={{ width: 480 }} />
           </FormItem>
-          <FormItem desc={'http(s)://'} divider label={'接口代理地址'} name="endpoint">
+          <FormItem desc={'http(s)://'} divider label={t('openAI.apiProxyAddress')} name="endpoint">
             <Input placeholder="" style={{ width: 360 }} />
           </FormItem>
-          <FormItem desc={'检查 APIKey 和接口代理地址是否设置正确'} divider label={'连通性检查'}>
+          <FormItem desc={t('openAI.checkAPIKeyAndProxy')} divider label={t('openAI.connectivityCheck')}>
             <Button
               loading={loading}
               onClick={() =>
@@ -90,7 +92,7 @@ const Config = (props: ConfigProps) => {
                 })
               }
             >
-              检查
+              {t('check')}
             </Button>
           </FormItem>
         </FormGroup>

@@ -18,6 +18,7 @@ import { useConfigStore } from '@/store/config';
 import { useSessionStore } from '@/store/session';
 import { useThemeStore } from '@/store/theme';
 import { BackgroundEffect } from '@/types/config';
+import { useTranslation } from 'react-i18next';
 
 interface CommonConfigProps {
   className?: string;
@@ -50,47 +51,48 @@ const CommonConfig = (props: CommonConfigProps) => {
   const clearSessions = useSessionStore((s) => s.clearSessions);
   const resetConfig = useConfigStore((s) => s.resetConfig);
   const { message, modal } = App.useApp();
+  const { t } = useTranslation(['setting', 'common']);
 
   const handleClear = () => {
     modal.confirm({
-      cancelText: '取消',
+      cancelText: t('cancel'),
       centered: true,
-      content: '操作无法撤销，清除后数据将无法恢复，请慎重操作',
+      content: t('irreversibleActionWarning'),
       okButtonProps: {
         danger: true,
       },
-      okText: '确定',
+      okText: t('confirm'),
       onOk: () => {
         clearSessions();
         clearAgentStorage();
-        message.success('清除成功');
+        message.success(t('clearSuccess'));
       },
-      title: '确认清除所有会话消息?',
+      title: t('confirmClearAllMessages'),
     });
   };
 
   const handleReset = () => {
     modal.confirm({
-      cancelText: '取消',
+      cancelText: t('cancel'),
       centered: true,
-      content: '操作无法撤销，重置后数据将无法恢复，请慎重操作',
+      content: t('irreversibleResetWarning'),
       okButtonProps: {
         danger: true,
       },
-      okText: '确定',
+      okText: t('confirm'),
       onOk: () => {
         resetConfig();
-        message.success('重置成功');
+        message.success(t('resetSuccess'));
       },
-      title: '确认重置所有系统设置?',
+      title: t('confirmResetAllSystemSettings'),
     });
   };
 
   return (
     <div className={classNames(styles.config, className)} style={style}>
       <Form style={{ display: 'flex', flexGrow: 1 }}>
-        <FormGroup icon={Settings2} title={'主题设置'}>
-          <FormItem desc={'主题色'} divider label={'自定义主题色'} name={'primaryColor'}>
+        <FormGroup icon={Settings2} title={t('themeSettings')}>
+          <FormItem desc={t('themeColor')} divider label={t('customThemeColor')} name={'primaryColor'}>
             <Swatches
               activeColor={primaryColor}
               colors={[
@@ -113,7 +115,7 @@ const CommonConfig = (props: CommonConfigProps) => {
               }}
             />
           </FormItem>
-          <FormItem desc={'自定义主题模式'} divider label={'主题模式'} name={'themeMode'}>
+          <FormItem desc={t('customThemeMode')} divider label={t('themeMode')} name={'themeMode'}>
             <CheckCard.Group
               defaultValue={themeMode}
               onChange={(value) => {
@@ -121,15 +123,15 @@ const CommonConfig = (props: CommonConfigProps) => {
               }}
               size="small"
             >
-              <CheckCard className={styles.effect} title="🔆 亮色模式" value="light" />
-              <CheckCard className={styles.effect} title="🌙 暗色模式" value="dark" />
-              <CheckCard className={styles.effect} title="💻 跟随系统" value="auto" />
+              <CheckCard className={styles.effect} title={`🔆 ${t('lightMode')}`} value="light" />
+              <CheckCard className={styles.effect} title={`🌙 ${t('darkMode')}`} value="dark" />
+              <CheckCard className={styles.effect} title={`💻 ${t('followSystem')}`} value="auto" />
             </CheckCard.Group>
           </FormItem>
           <FormItem
-            desc={'自定义背景效果，可关闭以提升性能'}
+            desc={t('customBackgroundEffect')}
             divider
-            label={'背景效果'}
+            label={t('backgroundEffect')}
             name={'backgroundEffect'}
           >
             <Segmented
@@ -139,34 +141,34 @@ const CommonConfig = (props: CommonConfigProps) => {
               }}
               options={[
                 {
-                  label: '光辉',
+                  label: t('glow'),
                   value: 'glow',
                 },
                 {
-                  label: '无背景',
+                  label: t('none'),
                   value: 'none',
                 },
               ]}
             />
           </FormItem>
         </FormGroup>
-        <FormGroup icon={Monitor} title={'系统设置'}>
+        <FormGroup icon={Monitor} title={t('systemSettings')}>
           <FormItem
-            desc={'将会清除所有会话与角色数据，包括会话列表，角色列表、会话消息等'}
+            desc={t('clearAllConversationData')}
             divider
-            label={'清除所有会话消息'}
+            label={t('clearAllConversationMessages')}
           >
             <Button danger onClick={handleClear} type={'primary'}>
-              立即清除
+              {t('clearImmediately')}
             </Button>
           </FormItem>
           <FormItem
-            desc={'将会重置所有系统设置，包括主题设置、背景效果、语言模型设置、窗口位置等'}
+            desc={t('resetAllSystemSettings')}
             divider
-            label={'重置系统设置'}
+            label={t('resetSystemSettings')}
           >
             <Button danger onClick={handleReset} type={'primary'}>
-              立即重置
+              {t('resetImmediately')}
             </Button>
           </FormItem>
         </FormGroup>
