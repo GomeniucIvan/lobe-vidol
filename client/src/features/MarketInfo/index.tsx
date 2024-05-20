@@ -7,8 +7,9 @@ import React, { memo, useState } from 'react';
 import Author from '@/components/Author';
 import AgentCard from '@/components/agent/AgentCard';
 import SystemRole from '@/components/agent/SystemRole';
-import { SIDEBAR_MAX_WIDTH, SIDEBAR_WIDTH } from '@/constants/common';
-import { agentListSelectors, useAgentStore } from '@/store/agent';
+import { SIDEBAR_MAX_WIDTH, SIDEBAR_WIDTH } from '@/constants/token';
+import { agentSelectors, useAgentStore } from '@/store/agent';
+import { useConfigStore } from '@/store/config';
 import { marketStoreSelectors, useMarketStore } from '@/store/market';
 import { useSessionStore } from '@/store/session';
 import { useTranslation } from 'react-i18next';
@@ -37,10 +38,11 @@ const Header = () => {
       marketStoreSelectors.currentAgentItem(s),
     ],
   );
+  const [closePanel] = useConfigStore((s) => [s.closePanel]);
   const [subscribe, unsubscribe, subscribed] = useAgentStore((s) => [
     s.subscribe,
     s.unsubscribe,
-    agentListSelectors.subscribed(s),
+    agentSelectors.subscribed(s),
   ]);
 
   const createSession = useSessionStore((s) => s.createSession);
@@ -57,6 +59,7 @@ const Header = () => {
           onClick={() => {
             createSession(currentAgentItem);
             router.push('/chat');
+            closePanel('market');
           }}
           type={'primary'}
         >
@@ -104,7 +107,13 @@ const Header = () => {
       <AgentCard
         actions={actions}
         agent={currentAgentItem}
-        extra={<Author item={currentAgentItem} />}
+        extra={
+          <Author
+            author={currentAgentItem?.author}
+            homepage={currentAgentItem?.homepage}
+            createAt={currentAgentItem?.createAt}
+          />
+        }
         footer={<SystemRole systemRole={currentAgentItem?.meta.readme} style={{ marginTop: 16 }} />}
       />
     </DraggablePanel>

@@ -3,6 +3,7 @@
 import { ActionIcon, Header as LobeHeader, Logo, TabsNav } from '@lobehub/ui';
 import { Space, Tag, Tooltip } from 'antd';
 import { GithubIcon, UserRoundPlusIcon } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -38,7 +39,9 @@ const Header = (props: Props) => {
       ]}
       logo={
         <Space>
-          <Logo extra={'Lobe Vidol'} size={36} />
+          <Link href="/" style={{ color: 'inherit' }}>
+            <Logo extra={'Lobe Vidol'} size={36} />
+          </Link>
           <Tooltip title={t('wipInfo')}>
             <Tag color="yellow">WIP</Tag>
           </Tooltip>

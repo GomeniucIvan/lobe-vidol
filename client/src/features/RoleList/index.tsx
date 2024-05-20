@@ -5,7 +5,7 @@ import { ChevronDown } from 'lucide-react';
 import React, { useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { HEADER_HEIGHT } from '@/constants/common';
+import { HEADER_HEIGHT } from '@/constants/token';
 import Agent from '@/features/Actions/Agent';
 import Elsa from '@/features/RoleList/List/Elsa';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,10 @@ import { useTranslation } from 'react-i18next';
 import List from './List';
 
 const useStyles = createStyles(({ css, token, prefixCls }) => ({
+  role: css`
+    overflow-y: auto;
+    height: 100%;
+  `,
   list: css`
     padding: 8px;
   `,
@@ -45,13 +49,13 @@ const useStyles = createStyles(({ css, token, prefixCls }) => ({
   `,
 }));
 
-const SideBar = () => {
+const RoleList = () => {
   const { styles } = useStyles();
   const [searchName, setSearchName] = useState<string>();
   const { t } = useTranslation('common');
 
   return (
-    <>
+    <div className={styles.role}>
       <Flexbox
         justify={'space-between'}
         horizontal
@@ -97,8 +101,8 @@ const SideBar = () => {
           ]}
         />
       </div>
-    </>
+    </div>
   );
 };
 
-export default SideBar;
+export default RoleList;
