@@ -121,15 +121,15 @@ const CommonConfig = (props: CommonConfigProps) => {
               }}
               options={[
                 {
-                  label: {`🔆 ${t('lightMode')}`
+                  label: `🔆 ${t('lightMode')}`,
                   value: 'light',
                 },
                 {
-                  label: {`🌙 ${t('darkMode')}`},
+                  label: `🌙 ${t('darkMode')}`,
                   value: 'dark',
                 },
                 {
-                  label: {`💻 ${t('followSystem')}`},
+                  label: `💻 ${t('followSystem')}`,
                   value: 'auto',
                 },
               ]}
