@@ -7,12 +7,15 @@ import { ROLE_VIEWER_HEIGHT, ROLE_VIEWER_WIDTH } from '@/constants/common';
 import AgentViewer from '@/features/AgentViewer';
 import { agentSelectors, useAgentStore } from '@/store/agent';
 import { generateModelKey } from '@/utils/model';
+import {useTranslation} from "react-i18next";
 
 interface ViewerWithUploadProps {
   style?: CSSProperties;
 }
 
 const ViewerWithUpload = memo<ViewerWithUploadProps>(({ style }) => {
+  const { t } = useTranslation('role');
+
   const [currentAgentModel, updateAgentConfig] = useAgentStore((s) => [
     agentSelectors.currentAgentModel(s),
     s.updateAgentConfig,
@@ -45,7 +48,7 @@ const ViewerWithUpload = memo<ViewerWithUploadProps>(({ style }) => {
       ) : (
         <EmptyGuide
           size={{ height: ROLE_VIEWER_HEIGHT, width: ROLE_VIEWER_WIDTH }}
-          extra={`支持单个文件上传，当前仅支持 .vrm 格式文件`}
+          extra={t('3dModelSettings.uploadFileDescription')}
         />
       )}
     </Upload>

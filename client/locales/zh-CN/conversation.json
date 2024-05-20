@@ -1,3 +1,4 @@
 {
-  "createConversation": "创建对话"
+  "createConversation": "创建对话",
+  "noRoleMessage" : "暂无角色，可以通过 + 创建自定义角色，也可通过发现页添加角色"
 }

@@ -1,0 +1,53 @@
+{
+  "information" : "基本信息",
+  "characterSettings": "角色设定",
+  "voice": "语音",
+  "3dModel" : "3D 模型",
+
+  "info": {
+    "avatar" : "头像",
+    "avatarDescription" : "自定义头像，点击头像自定义上传",
+    "name" : "名称",
+    "nameDescription" : "角色名称，与角色聊天时的称呼",
+    "call" : "招呼",
+    "callDescription" : "与角色初次聊天时的招呼用语",
+    "description" : "描述",
+    "descriptionDescription" : "角色描述，用于角色的简单介绍",
+    "roleDescription" : "角色说明",
+    "roleDescriptionDescription" : "角色的说明文件，用于发现页展示角色的详细说明",
+    "cover" : "封面",
+    "coverDescription" : "用于发现页展示角色，推荐尺寸 {{width}} * {{height}}"
+  },
+  "charSettings" : {
+    "systemRoleSettings" : "系统角色设定",
+    "systemRoleSettingsDescription" : "角色的背景设定，在与角色聊天时会发送给模型"
+  },
+  "voiceSettings" : {
+    "speechEngine" : "语音引擎",
+    "speechEngineDescription" : "语音合成引擎，建议优先选择 Edge ",
+    "language" : "语言",
+    "languageDescription" : "语音合成的语种，当前仅支持最常见的几种语言，如有需要请联系",
+    "voice" : "语音",
+    "voiceDescription": "根据引擎和语种不同",
+    "speed" : "语速",
+    "speedDescription" : "控制语速，取值范围 0 ~ 3，默认为 1",
+    "pitch" : "音调",
+    "pitchDescription" : "控制音调，取值范围 0 ~ 2，默认为 1",
+    "audition" : "试听",
+    "auditionDescription" : "试听文案根据语言不同"
+  },
+  "3dModelSettings" : {
+    "preview" : "模型预览",
+    "previewDescription" : "模型预览，可拖动模型文件以替换",
+    "uploadFileDescription" : "支持单个文件上传，当前仅支持 .vrm 格式文件",
+    "touchListName" : "触摸区域列表",
+    "touchList" : {
+      "head": "头部",
+      "arm" : "手臂",
+      "leg" : "腿部",
+      "chest" : "胸部",
+      "abdomen" : "腹部"
+    },
+    "reactionListName" : "触摸反应列表"
+  }
+}

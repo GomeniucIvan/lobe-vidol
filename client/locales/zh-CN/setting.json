@@ -19,5 +19,11 @@
   "clearImmediately": "立即清除",
   "resetAllSystemSettings": "将会重置所有系统设置，包括主题设置、背景效果、语言模型设置、窗口位置等",
   "resetSystemSettings": "重置系统设置",
-  "resetImmediately": "立即重置"
+  "resetImmediately": "立即重置",
+  "userSettings" : "用户设置",
+  "customAvatar" : "头像",
+  "customAvatarDescription" : "自定义头像",
+  "nickName" : "昵称",
+  "nickNameDescription" : "自定义昵称",
+  "nickNamePlaceholder" : "请输入昵称"
 }

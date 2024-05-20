@@ -9,6 +9,7 @@ import Model from './Model';
 import Role from './Role';
 import Voice from './Voice';
 import { useStyles } from './style';
+import {useTranslation} from "react-i18next";
 
 interface RolePanelProps {
   className?: string;
@@ -19,6 +20,7 @@ const RolePanel = (props: RolePanelProps) => {
   const { styles } = useStyles();
   const { className, style } = props;
   const [tab, setTab] = useState('info');
+  const { t } = useTranslation('role');
 
   return (
     <div className={classNames(styles.edit, className)} style={style}>
@@ -28,19 +30,19 @@ const RolePanel = (props: RolePanelProps) => {
           items={[
             {
               key: 'info',
-              label: '基本信息',
+              label: t('information'),
             },
             {
               key: 'role',
-              label: '角色设定',
+              label: t('characterSettings'),
             },
             {
               key: 'voice',
-              label: '语音',
+              label: t('voice'),
             },
             {
               key: 'model',
-              label: '3D 模型',
+              label: t('3dModel'),
             },
           ]}
           onChange={(key) => {

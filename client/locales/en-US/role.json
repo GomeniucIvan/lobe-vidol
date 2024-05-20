@@ -1,0 +1,53 @@
+{
+  "information" : "Information",
+  "characterSettings": "Character Settings",
+  "voice": "Voice",
+  "3dModel" : "3d Model",
+
+  "info": {
+    "avatar" : "Avatar",
+    "avatarDescription" : "Customize your avatar, click on the avatar to customize and upload it",
+    "name" : "Name",
+    "nameDescription" : "Character name, the name used when chatting with the character",
+    "call" : "Call",
+    "callDescription" : "What to say when chatting with a character for the first time",
+    "description" : "Description",
+    "descriptionDescription" : "Role description, a brief introduction to the role",
+    "roleDescription": "Role Description",
+    "roleDescriptionDescription": "The description document of the role, used to display detailed information about the role on the discovery page",
+    "cover": "Cover",
+    "coverDescription": "Used to display the role on the discovery page. Recommended size is {{width}} * {{height}}"
+  },
+  "charSettings" : {
+    "systemRoleSettings": "System Role Settings",
+    "systemRoleSettingsDescription": "The background settings of the role, which will be sent to the model when chatting with the role"
+  },
+  "voiceSettings": {
+    "speechEngine": "Speech Engine",
+    "speechEngineDescription": "Speech synthesis engine. It is recommended to choose Edge first",
+    "language": "Language",
+    "languageDescription": "Language for speech synthesis. Currently, only the most common languages are supported. Please contact us if needed",
+    "voice": "Voice",
+    "voiceDescription": "Varies according to the engine and language",
+    "speed": "Speed",
+    "speedDescription": "Controls the speech speed, with a range of 0 ~ 3, default is 1",
+    "pitch": "Pitch",
+    "pitchDescription": "Controls the pitch, with a range of 0 ~ 2, default is 1",
+    "audition": "Audition",
+    "auditionDescription": "Audition text varies by language"
+  },
+  "3dModelSettings": {
+    "preview": "Model Preview",
+    "previewDescription": "Model preview, drag and drop model files to replace",
+    "uploadFileDescription": "Supports single file upload, currently only .vrm format files are supported",
+    "touchListName": "Touch Area List",
+    "touchList": {
+      "head": "Head",
+      "arm": "Arm",
+      "leg": "Leg",
+      "chest": "Chest",
+      "abdomen": "Abdomen"
+    },
+    "reactionListName": "Touch Reaction List"
+  }
+}

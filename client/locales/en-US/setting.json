@@ -19,5 +19,11 @@
   "clearImmediately": "Clear Immediately",
   "resetAllSystemSettings": "This will reset all system settings, including theme settings, background effects, language model settings, window positions, etc.",
   "resetSystemSettings": "Reset System Settings",
-  "resetImmediately": "Reset Immediately"
+  "resetImmediately": "Reset Immediately",
+  "userSettings": "User Settings",
+  "customAvatar": "Avatar",
+  "customAvatarDescription": "Custom avatar",
+  "nickName": "Nickname",
+  "nickNameDescription": "Custom nickname",
+  "nickNamePlaceholder": "Please enter a nickname"
 }

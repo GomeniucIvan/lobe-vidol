@@ -93,14 +93,14 @@ const CommonConfig = (props: CommonConfigProps) => {
         form={form}
         onValuesChange={setConfig}
       >
-        <FormGroup icon={User2Icon} title={'用户设置'}>
-          <FormItem desc={'自定义头像'} divider label={'头像'} name={'avatar'}>
+        <FormGroup icon={User2Icon} title={t('userSettings')}>
+          <FormItem desc={t('customAvatarDescription')} divider label={t('customAvatar')} name={'avatar'}>
             <AvatarWithUpload />
           </FormItem>
-          <FormItem desc={'自定义昵称'} divider label={'昵称'} name={'nickName'}>
+          <FormItem desc={t('nickNameDescription')} divider label={t('nickName')} name={'nickName'}>
             <Input
               defaultValue={config.nickName}
-              placeholder={'请输入昵称'}
+              placeholder={t('nickNamePlaceholder')}
               maxLength={MAX_NAME_LENGTH}
               showCount
               onChange={(e) => {

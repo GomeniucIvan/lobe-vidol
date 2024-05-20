@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { useTouchStore } from '@/store/touch';
 import { TouchAreaEnum } from '@/types/touch';
+import {useTranslation} from "react-i18next";
 
 const useStyles = createStyles(({ css, token }) => ({
   active: css`
@@ -23,20 +24,21 @@ const useStyles = createStyles(({ css, token }) => ({
 const AreaList = () => {
   const { styles } = useStyles();
   const { currentTouchArea, setCurrentTouchArea } = useTouchStore();
+  const { t } = useTranslation('role');
 
   const data = [
-    { label: '头部', value: TouchAreaEnum.Head },
-    { label: '手臂', value: TouchAreaEnum.Arm },
-    { label: '腿部', value: TouchAreaEnum.Leg },
-    { label: '胸部', value: TouchAreaEnum.Chest },
-    { label: '腹部', value: TouchAreaEnum.Belly },
+    { label: t('3dModelSettings.touchList.head'), value: TouchAreaEnum.Head },
+    { label: t('3dModelSettings.touchList.arm'), value: TouchAreaEnum.Arm },
+    { label: t('3dModelSettings.touchList.leg'), value: TouchAreaEnum.Leg },
+    { label: t('3dModelSettings.touchList.chest'), value: TouchAreaEnum.Chest },
+    { label: t('3dModelSettings.touchList.abdomen'), value: TouchAreaEnum.Belly },
   ];
 
   return (
     <List
       className={styles.list}
       dataSource={data}
-      header={<div style={{ padding: 12 }}>触摸区域列表</div>}
+      header={<div style={{ padding: 12 }}>{t('3dModelSettings.touchListName')}</div>}
       renderItem={(item) => (
         <List.Item
           className={classNames(styles.listItem, {

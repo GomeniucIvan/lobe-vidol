@@ -12,6 +12,7 @@ import RoleDescription from '@/panels/RolePanel/RoleEdit/Info/RoleDescription';
 import RoleName from '@/panels/RolePanel/RoleEdit/Info/RoleName';
 
 import AvatarWithUpload from './AvatarWithUpload';
+import {useTranslation} from "react-i18next";
 
 interface InfoProps {
   className?: string;
@@ -49,43 +50,44 @@ const Info = (props: InfoProps) => {
   const { style, className } = props;
   const { styles } = useStyles();
   const [form] = Form.useForm();
+  const { t } = useTranslation('role');
 
   return (
     <Form form={form} layout="horizontal" requiredMark={false}>
       <div className={classNames(className, styles.container)} style={style}>
         <div className={styles.form}>
           <div className={styles.config}>
-            <FormItem desc={'自定义头像，点击头像自定义上传'} label={'头像'} name={'avatar'}>
+            <FormItem desc={t('info.avatarDescription')} label={t('info.avatar')} name={'avatar'}>
               <AvatarWithUpload />
             </FormItem>
-            <FormItem label={'名称'} desc={'角色名称，与角色聊天时的称呼'} divider name={['name']}>
+            <FormItem label={t('info.name')} desc={t('info.nameDescription')} divider name={['name']}>
               <RoleName style={{ width: INPUT_WIDTH_M }} />
             </FormItem>
-            <FormItem label={'招呼'} desc={'与角色初次聊天时的招呼用语'} name="greeting" divider>
+            <FormItem label={t('info.call')} desc={t('info.callDescription')} name="greeting" divider>
               <Greeting style={{ width: INPUT_WIDTH_L }} />
             </FormItem>
             <FormItem
-              label={'描述'}
+              label={t('info.description')}
               divider
-              desc={'角色描述，用于角色的简单介绍'}
+              desc={t('info.descriptionDescription')}
               name={'description'}
             >
               <RoleDescription style={{ width: INPUT_WIDTH_L }} />
             </FormItem>
             <FormItem
-              label={'角色说明'}
+              label={t('info.roleDescription')}
               name={'readme'}
               divider
-              desc="角色的说明文件，用于发现页展示角色的详细说明"
+              desc={t('info.roleDescriptionDescription')}
             >
               <ReadMe style={{ width: INPUT_WIDTH_L }} />
             </FormItem>
           </div>
           <div className={styles.more}>
             <FormItem
-              label={'封面'}
+              label={t('info.cover')}
               name={'cover'}
-              desc={`用于发现页展示角色，推荐尺寸 ${COVER_COMPRESS_WIDTH} * ${COVER_COMPRESS_HEIGHT}`}
+              desc={t('info.coverDescription', { width: COVER_COMPRESS_WIDTH, height:  COVER_COMPRESS_HEIGHT})}
             />
             <CoverWithUpload />
           </div>

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 import SystemRole from '@/panels/RolePanel/RoleEdit/Role/SystemRole';
+import {useTranslation} from "react-i18next";
 
 interface InfoProps {
   className?: string;
@@ -30,6 +31,7 @@ const useStyles = createStyles(({ css, token }) => ({
 const Info = (props: InfoProps) => {
   const { style, className } = props;
   const { styles } = useStyles();
+  const { t } = useTranslation('role');
 
   return (
     <Form>
@@ -38,8 +40,8 @@ const Info = (props: InfoProps) => {
           <FormItem
             name="systemRole"
             divider
-            label="系统角色设定"
-            desc="角色的背景设定，在与角色聊天时会发送给模型"
+            label={t('charSettings.systemRoleSettings')}
+            desc={t('charSettings.systemRoleSettingsDescription')}
           ></FormItem>
           <SystemRole />
         </div>

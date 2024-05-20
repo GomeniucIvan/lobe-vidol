@@ -8,6 +8,7 @@ import { speakCharacter } from '@/features/messages/speakCharacter';
 import { agentSelectors, useAgentStore } from '@/store/agent';
 import { useTouchStore } from '@/store/touch';
 import { useViewerStore } from '@/store/viewer';
+import {useTranslation} from "react-i18next";
 
 const useStyles = createStyles(({ css, token }) => ({
   active: css`
@@ -28,6 +29,7 @@ const AreaList = () => {
   const { styles } = useStyles();
   const { actionConfig, currentTouchArea } = useTouchStore();
   const currentAgentTTS = useAgentStore((s) => agentSelectors.currentAgentTTS(s), isEqual);
+  const { t } = useTranslation('role');
 
   const { viewer } = useViewerStore();
 
@@ -36,7 +38,7 @@ const AreaList = () => {
     <List
       className={styles.list}
       dataSource={data}
-      header={<div>触摸反应列表</div>}
+      header={<div>{t('3dModelSettings.reactionListName')}</div>}
       renderItem={(item) => (
         <List.Item
           actions={[

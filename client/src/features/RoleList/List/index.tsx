@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazy-load';
 import { agentSelectors, useAgentStore } from '@/store/agent';
 
 import SessionItem from './Item';
+import {useTranslation} from "react-i18next";
 
 const useStyles = createStyles(
   ({ css }) => css`
@@ -24,6 +25,7 @@ const SessionList = memo<SessionListProps>(({ filter }) => {
     agentSelectors.agentListIds(s),
   ]);
   const { styles } = useStyles();
+  const { t } = useTranslation('conversation');
 
   return (
     <>
@@ -39,7 +41,7 @@ const SessionList = memo<SessionListProps>(({ filter }) => {
       ))}
       {agentListIds.length === 0 && (
         <Empty
-          description={'暂无角色，可以通过 + 创建自定义角色，也可通过发现页添加角色'}
+          description={t('noRoleMessage')}
           image={Empty.PRESENTED_IMAGE_SIMPLE}
         />
       )}
