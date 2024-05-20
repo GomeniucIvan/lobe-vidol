@@ -1,4 +1,5 @@
 {
   "createConversation": "创建对话",
-  "noRoleMessage" : "暂无角色，可以通过 + 创建自定义角色，也可通过发现页添加角色"
+  "noRoleMessage" : "暂无角色，可以通过 + 创建自定义角色，也可通过发现页添加角色",
+  "tokenInfoTooltip" : "上下文消耗 Token 数量计算，数字代表 {总计使用} / {总计可用}]"
 }

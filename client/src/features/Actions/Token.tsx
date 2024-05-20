@@ -7,7 +7,7 @@ import { configSelectors, useConfigStore } from '@/store/config';
 import { useTranslation } from 'react-i18next';
 
 const Token = () => {
-  const config = useConfigStore((s) => configSelectors.currentOpenAIConfig(s), isEqual);
+  const config = useConfigStore((s) => configSelectors.currentServerConfig(s), isEqual);
   const usedTokens = useCalculateToken();
   const { t } = useTranslation('common');
 

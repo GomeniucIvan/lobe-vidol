@@ -1,4 +1,5 @@
 {
   "createConversation": "Create Conversation",
-  "noRoleMessage": "No roles available. You can create a custom role using the + button or add a role from the discovery page"
+  "noRoleMessage": "No roles available. You can create a custom role using the + button or add a role from the discovery page",
+  "tokenInfoTooltip": "Context token usage calculation, numbers represent {total used} / {total available}"
 }
