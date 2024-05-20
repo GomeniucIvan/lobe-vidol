@@ -1,6 +1,6 @@
 {
   "generalSettings": "通用设置",
-  "languageModel": "语言模型",
+  "serverSettings": "服务器设置",
   "themeSettings": "主题设置",
   "customThemeMode": "自定义主题模式",
   "themeColor": "主题色",
@@ -25,5 +25,14 @@
   "customAvatarDescription" : "自定义头像",
   "nickName" : "昵称",
   "nickNameDescription" : "自定义昵称",
-  "nickNamePlaceholder" : "请输入昵称"
+  "nickNamePlaceholder" : "请输入昵称",
+  "server": {
+    "checkTokenAndServerUrl": "检查令牌和后端地址是否设置正确",
+    "connectivityCheck": "连接检查",
+    "check": "检查",
+    "connectionFailed": "连接失败",
+    "bearerToken": "令牌",
+    "bearerTokenDescription": "Bearer 授权令牌",
+    "backendUrl": "服务器 URL"
+  }
 }

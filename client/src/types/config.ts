@@ -42,16 +42,13 @@ export interface CommonConfig {
   primaryColor: PrimaryColors;
 }
 
-export interface OpenAIConfig {
-  apikey?: string;
+export interface ServerConfig {
+  token?: string;
   endpoint?: string;
   model?: string;
-}
-
-export interface LanguageModelConfig {
-  openAI: OpenAIConfig;
+  imageModel?: string;
 }
 
 export interface Config extends CommonConfig {
-  languageModel: LanguageModelConfig;
+  serverConfig: ServerConfig;
 }

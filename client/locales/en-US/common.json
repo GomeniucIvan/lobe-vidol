@@ -1,17 +1,4 @@
 {
-  "openAI": {
-    "enterYourOpenAIKey": "Enter your OpenAI API Key to start the session. The application will not record your API Key.",
-    "customAPIKey": "Custom API Key",
-    "addOpenAIProxyAddress": "Add OpenAI Proxy Address (optional)",
-    "apiCallFailed": "API call failed, please check if the API Key and proxy address are set correctly",
-    "languageModel": "OpenAI Language Model",
-    "chatGPTModel": "Chat GPT Model",
-    "useYourOwnOpenAIKey": "Please use your own OpenAI Key",
-    "apiKey": "OpenAI Key",
-    "apiProxyAddress": "API Proxy Address",
-    "checkAPIKeyAndProxy": "Check if the API Key and proxy address are set correctly",
-    "connectivityCheck": "Connectivity Check"
-  },
   "playlist": "Playlist",
   "chat": "Chat",
   "copy": "Copy",

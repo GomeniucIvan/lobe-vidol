@@ -4,7 +4,7 @@ import { Flexbox } from 'react-layout-kit';
 import { useTranslation } from 'react-i18next';
 
 import CommonConfig from './common';
-import OpenAIConfig from './model/openai';
+import ServerConfig from './server';
 
 interface ConfigProps {
   className?: string;
@@ -27,8 +27,8 @@ const Config = (props: ConfigProps) => {
               label: t('generalSettings'),
             },
             {
-              key: 'languageModel',
-              label: t('languageModel'),
+              key: 'serverSettings',
+              label: t('serverSettings'),
             },
           ]}
           onChange={(key) => {
@@ -37,7 +37,7 @@ const Config = (props: ConfigProps) => {
         />
       </div>
       <Flexbox flex={1} width={'100%'} height={'100%'}>
-        {tab === 'languageModel' ? <OpenAIConfig /> : null}
+        {tab === 'serverSettings' ? <ServerConfig /> : null}
         {tab === 'common' ? <CommonConfig /> : null}
       </Flexbox>
     </Flexbox>

@@ -1,6 +1,6 @@
 {
   "generalSettings": "General Settings",
-  "languageModel": "Language Model",
+  "serverSettings": "Server Settings",
   "themeSettings": "Theme Settings",
   "customThemeMode": "Custom Theme Mode",
   "themeColor": "Theme Color",
@@ -25,5 +25,14 @@
   "customAvatarDescription": "Custom avatar",
   "nickName": "Nickname",
   "nickNameDescription": "Custom nickname",
-  "nickNamePlaceholder": "Please enter a nickname"
+  "nickNamePlaceholder": "Please enter a nickname",
+  "server" : {
+    "checkTokenAndServerUrl": "Check if the token and backend address are set correctly",
+    "connectivityCheck": "Connectivity Check",
+    "check" : "Check",
+    "connectionFailed": "Connection failed",
+    "bearerToken" : "Token",
+    "bearerTokenDescription" : "Bearer authorization token",
+    "backendUrl" : "Server URL"
+  }
 }

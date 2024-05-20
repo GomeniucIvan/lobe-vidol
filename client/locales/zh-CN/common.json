@@ -1,17 +1,4 @@
 {
-  "openAI": {
-    "enterYourOpenAIKey": "输入你的 OpenAI API Key 即可开始会话。应用不会记录你的 API Key.",
-    "customAPIKey": "自定义 API Key",
-    "addOpenAIProxyAddress": "添加 OpenAI 代理地址（可选",
-    "apiCallFailed": "调用接口失败，请检查 APIKey 和接口代理地址是否设置正确",
-    "languageModel": "OpenAI 语言模型",
-    "chatGPTModel": "Chat GPT 模型",
-    "useYourOwnOpenAIKey": "请使用自己的 OpenAI Key",
-    "apiKey": "OpenAI Key",
-    "apiProxyAddress": "接口代理地址",
-    "checkAPIKeyAndProxy": "检查 APIKey 和接口代理地址是否设置正确",
-    "connectivityCheck": "连通性检查"
-  },
   "playlist": "播放列表",
   "chat": "聊天",
   "copy": "复制",

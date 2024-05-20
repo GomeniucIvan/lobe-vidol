@@ -40,7 +40,7 @@ export interface ConfigAction {
    * Set OpenAI config
    * @param config
    */
-  setOpenAIConfig: (config: Partial<Config['languageModel']['openAI']>) => void;
+  setServerConfig: (config: Partial<Config['serverConfig']>) => void;
   /**
    * Set panel config
    * @param panel
@@ -86,8 +86,8 @@ const createStore: StateCreator<ConfigStore, [['zustand/devtools', never]]> = (s
     set({ config: nextSetting });
   },
 
-  setOpenAIConfig: (config) => {
-    get().setConfig({ languageModel: { openAI: config } });
+  setServerConfig: (config) => {
+    get().setConfig({ serverConfig: config });
   },
   setPanel: (panel, config) => {
     const prevSetting = get().panel[panel];

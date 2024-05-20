@@ -4,12 +4,11 @@ import { Config } from '@/types/config';
 
 export const DEFAULT_SETTINGS: Config = {
   backgroundEffect: 'glow',
-  languageModel: {
-    openAI: {
-      apikey: '',
-      endpoint: '',
-      model: 'gpt-3.5-turbo',
-    },
+  serverConfig: {
+    token: '',
+    endpoint: '',
+    model: 'openchat',
+    imageModel: 'sdxl'
   },
   primaryColor: DEFAULT_PRIMARY_COLOR,
   avatar: DEFAULT_USER_AVATAR,

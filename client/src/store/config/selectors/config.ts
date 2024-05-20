@@ -1,9 +1,9 @@
 import { INITIAL_Z_INDEX } from '@/constants/token';
 import { ConfigStore } from '@/store/config';
-import { OpenAIConfig, PanelKey } from '@/types/config';
+import { ServerConfig, PanelKey } from '@/types/config';
 
-const currentOpenAIConfig = (s: ConfigStore): OpenAIConfig | undefined => {
-  return s.config.languageModel.openAI;
+const currentServerConfig = (s: ConfigStore): ServerConfig | undefined => {
+  return s.config.serverConfig;
 };
 
 const getPanelZIndex = (s: ConfigStore, panelKey: PanelKey) => {
@@ -13,6 +13,6 @@ const getPanelZIndex = (s: ConfigStore, panelKey: PanelKey) => {
 };
 
 export const configSelectors = {
-  currentOpenAIConfig,
+  currentServerConfig,
   getPanelZIndex,
 };
