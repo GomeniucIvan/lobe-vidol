@@ -1,12 +1,12 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using lobe_vidol.Server.Models.Chat;
-using Microsoft.AspNetCore.Mvc;
-using StableDiffusion.NET;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using LobeVidol.Server.Models.Chat;
+using Microsoft.AspNetCore.Mvc;
+using StableDiffusion.NET;
 
-namespace lobe_vidol.Server.Controllers;
+namespace LobeVidol.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]

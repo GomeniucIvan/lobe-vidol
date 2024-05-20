@@ -31,3 +31,5 @@ _ReSharper*/
 
 # NUKE
 .nuke/temp
+lobe-vidol.sln.DotSettings
+server/appsettings.Development.json

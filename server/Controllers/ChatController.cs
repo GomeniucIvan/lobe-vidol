@@ -1,13 +1,10 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using LLama;
-using LLama.Abstractions;
 using LLama.Common;
-using lobe_vidol.Server.Models.Chat;
+using LobeVidol.Server.Models.Chat;
 using Microsoft.AspNetCore.Mvc;
-using static LLama.Common.ChatHistory;
 
-namespace lobe_vidol.Server.Controllers;
+namespace LobeVidol.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]

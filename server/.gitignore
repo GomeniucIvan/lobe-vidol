@@ -187,4 +187,11 @@ logs/
 
 *-sym.*
 *-symdir/
-*.json
+
+
+
+# =========================
+# Settings
+# =========================
+appsettings.json
+secrets.json

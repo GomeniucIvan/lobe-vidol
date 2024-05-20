@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lobe-vidol.Server", "server\lobe-vidol.Server.csproj", "{BDCD1FFF-13F7-4558-9D4E-8A3C970A59CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobeVidol.Server", "server\LobeVidol.Server.csproj", "{BDCD1FFF-13F7-4558-9D4E-8A3C970A59CE}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "lobe-vidol.client", "client\lobe-vidol.client.esproj", "{1A4CE738-9A1C-49DA-BE71-BB2D8E3CC761}"
 EndProject

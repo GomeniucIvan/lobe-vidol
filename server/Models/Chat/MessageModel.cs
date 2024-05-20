@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace lobe_vidol.Server.Models.Chat;
+namespace LobeVidol.Server.Models.Chat;
 
 public class RootModel
 {
