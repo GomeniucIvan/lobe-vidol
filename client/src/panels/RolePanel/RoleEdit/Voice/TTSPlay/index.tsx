@@ -6,6 +6,7 @@ import React, { CSSProperties, memo, useRef } from 'react';
 import { supportedLocales } from '@/constants/tts';
 import { speechApi } from '@/services/tts';
 import { agentSelectors, useAgentStore } from '@/store/agent';
+import {useTranslation} from "react-i18next";
 
 interface Props {
   className?: string;
@@ -18,6 +19,7 @@ export default memo<Props>((props) => {
 
   const tts = useAgentStore((s) => agentSelectors.currentAgentTTS(s));
   const sample = supportedLocales.find((item) => item.value === tts?.locale)?.sample;
+  const { t } = useTranslation('role');
 
   const { loading, run: speek } = useRequest(speechApi, {
     manual: true,
@@ -30,7 +32,7 @@ export default memo<Props>((props) => {
       }
     },
     onSuccess: (res) => {
-      message.success('转换成功');
+      message.success(t('voiceSettings.conversationSuccessful'));
       const adUrl = URL.createObjectURL(new Blob([res]));
       if (ref.current) {
         ref.current.src = adUrl;
@@ -50,11 +52,11 @@ export default memo<Props>((props) => {
         loading={loading}
         onClick={() => {
           if (!tts?.locale) {
-            message.error('请先选择语言');
+            message.error(t('voiceSettings.selectLanguage'));
             return;
           }
           if (!tts?.voice) {
-            message.error('请先选择语音');
+            message.error(t('voiceSettings.selectVoice'));
             return;
           }
           if (sample) {
@@ -62,7 +64,7 @@ export default memo<Props>((props) => {
           }
         }}
       >
-        试听
+        {t('voiceSettings.previewVoice')}
       </Button>
       <audio ref={ref} />
     </>

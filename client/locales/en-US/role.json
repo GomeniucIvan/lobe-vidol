@@ -34,7 +34,11 @@
     "pitch": "Pitch",
     "pitchDescription": "Controls the pitch, with a range of 0 ~ 2, default is 1",
     "audition": "Audition",
-    "auditionDescription": "Audition text varies by language"
+    "auditionDescription": "Audition text varies by language",
+    "conversationSuccessful": "Conversion Successful",
+    "selectLanguage": "Please select a language first",
+    "selectVoice": "Please select a voice first",
+    "previewVoice": "Preview Voice"
   },
   "3dModelSettings": {
     "preview": "Model Preview",
