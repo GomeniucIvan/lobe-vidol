@@ -2,11 +2,13 @@
 using LLama;
 using LLama.Common;
 using LobeVidol.Server.Models.Chat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LobeVidol.Server.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class ChatController : ControllerBase
 {

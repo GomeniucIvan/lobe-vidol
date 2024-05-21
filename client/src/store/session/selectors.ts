@@ -1,5 +1,5 @@
 import { LOBE_VIDOL_DEFAULT_AGENT_ID } from '@/constants/agent';
-import { DEFAULT_USER_AVATAR } from '@/constants/common';
+import {COVER_COMPRESS_HEIGHT, COVER_COMPRESS_WIDTH, DEFAULT_USER_AVATAR} from '@/constants/common';
 import { useAgentStore } from '@/store/agent';
 import { useConfigStore } from '@/store/config';
 import { Agent } from '@/types/agent';
@@ -7,6 +7,7 @@ import { ChatMessage } from '@/types/chat';
 import { Session } from '@/types/session';
 
 import { SessionStore } from './index';
+import {useTranslation} from "react-i18next";
 
 const currentSession = (s: SessionStore): Session | undefined => {
   const { activeId, sessionList, defaultSession } = s;
@@ -60,6 +61,7 @@ const currentChats = (s: SessionStore): ChatMessage[] => {
   if (!session || !agent) return [];
 
   const { avatar, name, description } = agent.meta;
+  const { t } = useTranslation('chat');
 
   const { messages } = session;
   return messages?.map((message) => {
@@ -70,7 +72,7 @@ const currentChats = (s: SessionStore): ChatMessage[] => {
       meta: {
         avatar: message.role === 'user' ? (userAvatar ? userAvatar : DEFAULT_USER_AVATAR) : avatar,
         description: message.role === 'user' ? undefined : description,
-        title: message.role === 'user' ? (userNickName ? userNickName : '你') : name,
+        title: message.role === 'user' ? (userNickName ? userNickName : t('you')) : name,
       },
     };
   });
@@ -83,12 +85,13 @@ const currentChatsWithGreetingMessage = (s: SessionStore): ChatMessage[] => {
 
   if (!isBrandNewChat) return data;
 
+  const { t } = useTranslation('chat');
   const agent = currentAgent(s);
 
   const initTime = Date.now();
 
   const emptyGuideMessage = {
-    content: agent?.greeting || `你好，我是${agent?.meta.name}，有什么可以帮助你的吗？`,
+    content: agent?.greeting || t('defaultGreeting', { name: agent?.meta.name}),
     createdAt: initTime,
     id: 'default',
     meta: {

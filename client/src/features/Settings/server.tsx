@@ -8,7 +8,7 @@ import { HardDrive } from 'lucide-react';
 import React, { useEffect } from 'react';
 
 import { OPENAI_MODEL_LIST } from '@/constants/openai';
-import { chatCompletion } from '@/services/chat';
+import {chatCompletion, checkConnection} from '@/services/chat';
 import { configSelectors, useConfigStore } from '@/store/config';
 import { ChatMessage } from '@/types/chat';
 import { useTranslation } from 'react-i18next';
@@ -38,7 +38,7 @@ const Config = (props: ConfigProps) => {
     form.setFieldsValue(serverConfig);
   }, [serverConfig, form]);
 
-  const { loading, run: checkConnect } = useRequest(chatCompletion, {
+  const { loading, run: checkConnect } = useRequest(checkConnection, {
     manual: true,
     onSuccess: (res) => {
       if (!res.ok) {
@@ -80,15 +80,7 @@ const Config = (props: ConfigProps) => {
             <Button
               loading={loading}
               onClick={() =>
-                checkConnect({
-                  messages: [
-                    {
-                      content: 'Hi',
-                      role: 'user',
-                    } as ChatMessage,
-                  ],
-                  model: 'gpt-3.5-turbo',
-                })
+                checkConnect()
               }
             >
               {t('server.check')}

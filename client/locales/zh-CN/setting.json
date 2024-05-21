@@ -33,6 +33,7 @@
     "connectionFailed": "连接失败",
     "bearerToken": "令牌",
     "bearerTokenDescription": "Bearer 授权令牌",
-    "backendUrl": "服务器 URL"
+    "backendUrl": "服务器 URL",
+    "checkPassed": "检查通过"
   }
 }

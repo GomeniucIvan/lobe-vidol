@@ -33,6 +33,7 @@
     "connectionFailed": "Connection failed",
     "bearerToken" : "Token",
     "bearerTokenDescription" : "Bearer authorization token",
-    "backendUrl" : "Server URL"
+    "backendUrl" : "Server URL",
+    "checkPassed": "Check Passed"
   }
 }

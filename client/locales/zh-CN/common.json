@@ -30,7 +30,6 @@
   "irreversibleResetWarning": "操作无法撤销，重置后数据将无法恢复，请慎重操作",
   "resetSuccess": "重置成功",
   "confirmResetAllSystemSettings": "确认重置所有系统设置?",
-  "checkPassed": "检查通过",
   "irreversibleAction": "该操作不可逆，请谨慎操作",
   "confirmDeleteHistoryMessages": "确定删除历史消息？",
   "deleteHistoryMessages": "删除历史消息",

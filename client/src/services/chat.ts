@@ -1,4 +1,3 @@
-import { OPENAI_API_KEY, OPENAI_END_POINT } from '@/constants/openai';
 import { speakCharacter } from '@/features/messages/speakCharacter';
 import { configSelectors, useConfigStore } from '@/store/config';
 import { sessionSelectors, useSessionStore } from '@/store/session';
@@ -7,11 +6,10 @@ import { ChatMessage } from '@/types/chat';
 import { ChatStreamPayload } from '@/types/openai/chat';
 
 const createHeader = (header?: any) => {
-  const config = configSelectors.currentOpenAIConfig(useConfigStore.getState());
+  const config = configSelectors.currentServerConfig(useConfigStore.getState());
   return {
     'Content-Type': 'application/json',
-    [OPENAI_API_KEY]: config?.apikey || '',
-    [OPENAI_END_POINT]: config?.endpoint || '',
+    'Authorization': config?.token,
     ...header,
   };
 };
@@ -20,14 +18,22 @@ interface ChatCompletionPayload extends Partial<Omit<ChatStreamPayload, 'message
   messages: ChatMessage[];
 }
 
+export const checkConnection = async () => {
+  const config = configSelectors.currentServerConfig(useConfigStore.getState());
+
+  return await fetch(`${config?.endpoint}authorization/check`, {
+    headers: createHeader(),
+    method: 'POST',
+  });
+};
+
 export const chatCompletion = async (payload: ChatCompletionPayload) => {
-  const config = configSelectors.currentOpenAIConfig(useConfigStore.getState());
+  const config = configSelectors.currentServerConfig(useConfigStore.getState());
   const { messages } = payload;
 
   const postMessages = messages.map((m) => ({ content: m.content, role: m.role }));
 
-  //TODO vite proxy
-  return await fetch('https://localhost:7243/chat/completion', {
+  return await fetch(`${config?.endpoint}chat/completion`, {
     body: JSON.stringify({
       model: config?.model,
       ...payload,

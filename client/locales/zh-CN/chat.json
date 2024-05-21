@@ -3,5 +3,7 @@
   "musicSubscriptionAndDiscovery": "音乐订阅与发现",
   "currentPlaylist": "当前播放列表",
   "enterContentToStartChat": "请输入内容开始聊天",
-  "reminderAIGeneratedContent": "请谨记：智能体所说的一切都是由 AI 生成的"
+  "reminderAIGeneratedContent": "请谨记：智能体所说的一切都是由 AI 生成的",
+  "you": "You",
+  "defaultGreeting": "Hello, I am {{name}}, how can I help you?"
 }

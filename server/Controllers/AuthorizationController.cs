@@ -50,15 +50,22 @@ namespace LobeVidol.Server.Controllers
             }
         }
 
-        [HttpPost("validate")]
-        public IActionResult ValidateToken([FromBody] string token)
+        [HttpPost("check")]
+        public IActionResult Check()
         {
+            if (!Request.Headers.TryGetValue("Authorization", out var token))
+            {
+                return BadRequest("Authorization header missing");
+            }
+
+            var tokenStr = token.ToString().StartsWith("Bearer ") ? token.ToString().Substring(7) : token.ToString();
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
 
             try
             {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                tokenHandler.ValidateToken(tokenStr, new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -69,11 +76,11 @@ namespace LobeVidol.Server.Controllers
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 }, out SecurityToken validatedToken);
 
-                return Ok(new { valid = true });
+                return Ok();
             }
             catch (Exception)
             {
-                return Ok(new { valid = false });
+                return BadRequest();
             }
         }
     }

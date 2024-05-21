@@ -30,7 +30,6 @@
   "irreversibleResetWarning": "Action cannot be undone, data cannot be recovered after reset, please proceed with caution",
   "resetSuccess": "Reset Successful",
   "confirmResetAllSystemSettings": "Confirm reset of all system settings?",
-  "checkPassed": "Check Passed",
   "irreversibleAction": "This action is irreversible, please proceed with caution",
   "confirmDeleteHistoryMessages": "Are you sure you want to delete history messages?",
   "deleteHistoryMessages": "Delete History Messages",

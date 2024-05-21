@@ -3,14 +3,15 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using LobeVidol.Server.Models.Chat;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StableDiffusion.NET;
 
 namespace LobeVidol.Server.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
-
 public class ImageController
 {
     [HttpPost("generate")]
