@@ -1,0 +1,9 @@
+{
+  "search": {
+    "placeholder": "搜索模型名称、描述或关键字..."
+  },
+  "title" : {
+    "downloadedModels" : "已下载模型",
+    "allModels" : "所有模型"
+  }
+}

@@ -4,15 +4,7 @@ import { sessionSelectors, useSessionStore } from '@/store/session';
 import { useViewerStore } from '@/store/viewer';
 import { ChatMessage } from '@/types/chat';
 import { ChatStreamPayload } from '@/types/openai/chat';
-
-const createHeader = (header?: any) => {
-  const config = configSelectors.currentServerConfig(useConfigStore.getState());
-  return {
-    'Content-Type': 'application/json',
-    'Authorization': config?.token,
-    ...header,
-  };
-};
+import {createHeader} from "@/store/config/selectors/config";
 
 interface ChatCompletionPayload extends Partial<Omit<ChatStreamPayload, 'messages'>> {
   messages: ChatMessage[];

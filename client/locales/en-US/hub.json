@@ -1,0 +1,9 @@
+{
+  "search": {
+    "placeholder": "Search model name, description or keywords..."
+  },
+  "title" : {
+    "downloadedModels" : "Downloaded models",
+    "allModels" : "All models"
+  }
+}

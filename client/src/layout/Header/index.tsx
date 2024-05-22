@@ -60,6 +60,10 @@ const Header = (props: Props) => {
               label: t('role'),
             },
             {
+              key: HeaderNavKey.Hub,
+              label: t('hub'),
+            },
+            {
               key: HeaderNavKey.Market,
               label: t('market'),
             },

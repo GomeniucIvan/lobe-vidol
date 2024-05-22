@@ -1,5 +1,5 @@
 import { INITIAL_Z_INDEX } from '@/constants/token';
-import { ConfigStore } from '@/store/config';
+import {ConfigStore, useConfigStore} from '@/store/config';
 import { ServerConfig, PanelKey } from '@/types/config';
 
 const currentServerConfig = (s: ConfigStore): ServerConfig | undefined => {
@@ -15,4 +15,13 @@ const getPanelZIndex = (s: ConfigStore, panelKey: PanelKey) => {
 export const configSelectors = {
   currentServerConfig,
   getPanelZIndex,
+};
+
+export const createHeader = (header?: any) => {
+  const config = configSelectors.currentServerConfig(useConfigStore.getState());
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': config?.token,
+    ...header,
+  };
 };

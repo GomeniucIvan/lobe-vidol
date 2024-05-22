@@ -4,4 +4,5 @@ export enum HeaderNavKey {
   My = 'my',
   Role = 'role',
   Settings = 'settings',
+  Hub = 'hub',
 }
